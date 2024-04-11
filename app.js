@@ -1,19 +1,20 @@
 require("dotenv").config();
-const cors = require('cors');
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
 
-
 const connectDB = require("./db/connect");
 const userRoute = require("./routes/userRoute");
+
+let addCount = 0;
+let updateCount = 0;
 
 const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use(morgan('tiny'));
-
+app.use(morgan("tiny"));
 
 app.use("/api/data/user", userRoute);
 
@@ -29,3 +30,5 @@ const start = async () => {
   }
 };
 start();
+
+module.exports = { addCount, updateCount };

@@ -1,4 +1,5 @@
 const User = require("../model/User");
+const { addCount, updateCount } = require("../app");
 
 const getUsers = async (req, res) => {
   try {
@@ -34,9 +35,13 @@ const updateUser = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+const countApiCall = async (req, res) => {
+  res.json({ addCounter: addCount, updateCounter: updateCount });
+};
 
 module.exports = {
   addUser,
   getUsers,
   updateUser,
+  countApiCall,
 };
