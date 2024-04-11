@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const User = require("../model/User");
 const { addCount, updateCount } = require("../app");
 
@@ -25,7 +26,7 @@ const updateUser = async (req, res) => {
   const userData = req.body;
   try {
     const user = await User.findByIdAndUpdate(
-      { _id: userId },
+      { _id: new mongoose.Types.ObjectId(userId) },
       userData,
       { new: true },
       { runValidators: true }
