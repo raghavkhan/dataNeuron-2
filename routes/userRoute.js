@@ -7,7 +7,6 @@ const {
   getUsers,
   addUser,
   updateUser,
-  countApiCall,
 } = require("../controllers/userController");
 
 // Middleware for ID uniqueness validation
@@ -42,6 +41,5 @@ const validatename = (req, res, next) => {
 router.get("/", getUsers);
 router.post("/", validateIdUniqueness, validatename, validateAge, addUser);
 router.put("/:id", validatename, validateAge, updateUser);
-router.get("/count",countApiCall)
 
 module.exports = router;
